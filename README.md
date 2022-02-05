@@ -1,6 +1,8 @@
 ## Description
 
-Project on End to End CI/CD pipeline for java based application using Git,Github,Jenkins,Maven,Sonarqube,Nexus,Docker and Kuberenets with ECR as private docker registry and Zero Downtime Deployment.
+
+Project on End to End CI/CD pipeline for java based application using Git,Github,Jenkins,Maven,Sonarqube,Nexus,Slack,Docker and Kuberenets with ECR as private docker registry and Zero Downtime Deployment.
+
 
 ![end-to-end-cicd-FLOW](https://user-images.githubusercontent.com/96073033/152660142-349279ac-e756-4d2c-abc8-acca3f12d958.JPG)
 
