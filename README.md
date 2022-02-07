@@ -86,6 +86,8 @@ FINAL RESULT
 
 ## Jenkins Pipeline
 
+Change account number and credentials as per your environment.
+
 ```sh
 
 def COMMIT
@@ -96,7 +98,7 @@ pipeline
  agent any
  environment
  {
-     AWS_ACCOUNT_ID="930264708953"
+     AWS_ACCOUNT_ID="<Your account Id>"
      AWS_DEFAULT_REGION="us-east-1" 
      IMAGE_REPO_NAME="mavenwebapp"
      REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
@@ -120,7 +122,7 @@ pipeline
          {
              script
              {
-                 checkout([$class: 'GitSCM', branches: [[name: '*/development']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/dev1git/maven-web-application.git']]])
+                 checkout([$class: 'GitSCM', branches: [[name: '*/development']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NITHIN-JOHN-GEORGE/JAVA-CI-CD-PIPELINE.git']]])
                  COMMIT = sh (script: "git rev-parse --short=10 HEAD", returnStdout: true).trim()  
                  BRANCH_NAME = sh(script: 'git name-rev --name-only HEAD', returnStdout: true)
                  GIT_BRANCH = BRANCH_NAME.substring(BRANCH_NAME.lastIndexOf('/') + 1, BRANCH_NAME.length()) 
@@ -258,7 +260,7 @@ pipeline
         Regards,
  
         Nithin John George
-        ''', compressLog: true, replyTo: 'njdevops321@gmail.com', 
+        ''', compressLog: true, replyTo: '<Your mail id>', 
         subject: '$PROJECT_NAME - $BUILD_NUMBER - $BUILD_STATUS', to: 'njdevops321@gmail.com'
      }
      failure
@@ -271,8 +273,8 @@ pipeline
         Regards,
  
         Nithin John George
-        ''', compressLog: true, replyTo: 'njdevops321@gmail.com', 
-        subject: '$PROJECT_NAME - $BUILD_NUMBER - $BUILD_STATUS', to: 'njdevops321@gmail.com'
+        ''', compressLog: true, replyTo: '<Your mail id>', 
+        subject: '$PROJECT_NAME - $BUILD_NUMBER - $BUILD_STATUS', to: '<Your mail id>'
      }
  }
 
@@ -312,7 +314,7 @@ spec:
       - name: regcrd
       containers:
       - name: mavenwebapp-container
-        image: 930264708953.dkr.ecr.us-east-1.amazonaws.com/mavenwebapp:mavenwebapp-VERSION
+        image: <AWS_ACCOUNT_NUMBER>.dkr.ecr.us-east-1.amazonaws.com/mavenwebapp:mavenwebapp-VERSION
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
